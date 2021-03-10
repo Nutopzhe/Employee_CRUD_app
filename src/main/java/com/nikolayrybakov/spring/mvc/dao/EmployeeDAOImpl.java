@@ -3,6 +3,7 @@ package com.nikolayrybakov.spring.mvc.dao;
 import com.nikolayrybakov.spring.mvc.entity.Employee;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,19 +12,16 @@ import java.util.List;
 @Repository
 public class EmployeeDAOImpl implements EmployeeDAO {
 
-    private final SessionFactory sessionFactory;
-
-    public EmployeeDAOImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
-    }
+    @Autowired
+    private  SessionFactory sessionFactory;
 
     @Override
     @Transactional
     public List<Employee> getAllEmployee() {
         Session session = sessionFactory.getCurrentSession();
-
-        return session.createQuery("from Employee",
+        List<Employee> allEmployees = session.createQuery("from Employee",
                 Employee.class).getResultList();
+        return allEmployees;
     }
 
     @Override
