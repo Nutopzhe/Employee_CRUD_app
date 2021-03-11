@@ -1,6 +1,6 @@
 <%@ taglib prefix="form" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8"%>
 <html>
 <head>
     <title>All Employees</title>
@@ -13,13 +13,20 @@
         <th>Surname</th>
         <th>Department</th>
         <th>Salary</th>
+        <th>Operations</th>
     </tr>
     <c:forEach var="emp" items="${employees}">
+
+        <c:url var="updateButton" value="/updateInfo">
+            <c:param name="empId" value="${emp.id}"/>
+        </c:url>
+
         <tr>
             <td>${emp.name}</td>
             <td>${emp.surname}</td>
             <td>${emp.department}</td>
             <td>${emp.salary}</td>
+            <td><input type="button" value="Update" onclick="window.location.href = '${updateButton}'"></td>
         </tr>
     </c:forEach>
 </table>

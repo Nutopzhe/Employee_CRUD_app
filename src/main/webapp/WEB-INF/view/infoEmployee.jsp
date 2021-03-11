@@ -5,6 +5,10 @@
 
 <h2>Employee Info</h2>
 <form:form action="saveEmployee" modelAttribute="employee">
+
+    <%--Невидимая форма с id сотрудника--%>
+    <form:hidden path="id"/>
+
     <table>
         <tr>
             <td>Name:</td>
