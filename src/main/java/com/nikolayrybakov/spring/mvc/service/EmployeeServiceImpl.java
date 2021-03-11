@@ -34,12 +34,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     @Transactional
-    public void updateEmployee(Employee emp) {
-
-    }
-
-    @Override
-    @Transactional
     public void removeEmployee(int id) {
 
     }
